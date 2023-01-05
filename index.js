@@ -17,9 +17,15 @@ app.get('/',(req,res)=>{
 app.get('/about',(req,res)=>{
     return res.status(200).sendFile(path.join(__dirname + '/pages/about.html'))
 })
+
 //http://localhost:5000/profile
 app.get('/profile',(req,res)=>{
     return res.status(200).sendFile(path.join(__dirname + '/pages/profile.html'))
+})
+
+//404 Not found page
+app.use((req,res,next)=>{
+    return res.status(404).sendFile(path.join(__dirname + '/pages/missing.html'))
 })
 
 app.listen(PORT,()=>{
